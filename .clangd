@@ -1,0 +1,2 @@
+CompileFlags:
+  Add: [-std=c18, -Wall, -Werror]
