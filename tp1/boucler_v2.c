@@ -1,7 +1,10 @@
+#include <signal.h>
+#include <stdbool.h>
+#include <sys/_types/_pid_t.h>
+#include <sys/signal.h>
 #define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <unistd.h>
 
 int main(int argc, char **argv) {
@@ -18,16 +21,13 @@ int main(int argc, char **argv) {
         perror("Error : Scanning the second argument failed");
         exit(EXIT_FAILURE);
     }
-    char current_time[80];
-    time_t t;
-    struct tm *tm;
     pid_t pid = getpid();
-    for (int i = 0; i < nb_repeat; i++) {
-        t = time(NULL);
-        tm = localtime(&t);
-        strftime(current_time, sizeof(current_time), "%c", tm);
-        printf("Je suis le processus %d, il est %s\n", pid, current_time);
-        sleep(nb_seconds);
-    }
-    exit(EXIT_SUCCESS);
+    signal(SIGINT, SIG_IGN);
+    printf("Processus de pid %d : Protege contre SIGINT\n", pid);
+    printf("Processus de pid %d : Je vais devenir l'executable boucler pour afficher %d fois "
+           "toutes les %d secondes\n",
+           pid, nb_repeat, nb_seconds);
+    execv("boucler", argv);
+    perror("Error : execv failed");
+    exit(EXIT_FAILURE);
 }

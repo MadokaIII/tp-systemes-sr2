@@ -11,11 +11,11 @@ int main(int argc, char **argv) {
     }
     int nb_sons, nb_calls;
     if (sscanf(argv[1], "%d", &nb_sons) != 1) {
-        fprintf(stderr, "Error : Failed scanning 1st value.\n");
+        perror("Error : Failed scanning 1st value.");
         exit(EXIT_FAILURE);
     }
     if (sscanf(argv[2], "%d", &nb_calls) != 1) {
-        fprintf(stderr, "Error : Failed scanning 2nd value.\n");
+        perror("Error : Failed scanning 2nd value.");
         exit(EXIT_FAILURE);
     }
     pid_t pid;
@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
     for (int i = 0; i < nb_sons; i++) {
         switch (fork()) {
         case -1:
-            perror("Error : Fork failed.\n");
+            perror("Error : Fork failed.");
             exit(EXIT_FAILURE);
         case 0:
             pid = getpid();
@@ -37,7 +37,7 @@ int main(int argc, char **argv) {
     }
     for (int i = 0; i < nb_sons; i++) {
         if ((pid = wait(&status)) == -1) {
-            perror("Error : Wait call failed (no child or interrupted)\n");
+            perror("Error : Wait call failed (no child or interrupted)");
             exit(EXIT_FAILURE);
         }
         if (WIFEXITED(status)) {
