@@ -1,4 +1,3 @@
-#include <sys/_types/_pid_t.h>
 #define _POSIX_C_SOURCE 200809L
 #define PRODUCTION 60
 #define READ_RIGHTS(n) (n + 1) * 6

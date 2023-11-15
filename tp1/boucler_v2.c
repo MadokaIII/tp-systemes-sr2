@@ -1,8 +1,6 @@
+#define _POSIX_C_SOURCE 200809L
 #include <signal.h>
 #include <stdbool.h>
-#include <sys/_types/_pid_t.h>
-#include <sys/signal.h>
-#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
