@@ -1,6 +1,0 @@
-add_executable(tp1_boucler boucler.c)
-add_executable(tp1_boucler_v2 boucler_v2.c)
-add_executable(tp1_exo1a exo1a.c)
-add_executable(tp1_exo1b exo1b.c)
-add_executable(tp1_exo3 exo3.c)
-add_executable(tp1_exo4 exo4.c)
