@@ -1,6 +1,6 @@
-CC = clang
-CFLAGS = -Wall -Wextra -std=c99
-DEBUG_FLAGS = -g -fsanitize=address -fno-omit-frame-pointer
+CC = zig cc
+CFLAGS = -Wall -Wextra -std=c99 -Wno-unused-parameter
+DEBUG_FLAGS = -g -O0 -DDEBUG
 SRC_DIR = src
 BUILD_DIR = bin
 LOG_DIR = diagnostics

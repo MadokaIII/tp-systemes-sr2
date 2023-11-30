@@ -54,3 +54,4 @@ dkms.conf
 compile_commands.json
 bin/
 diagnostics/
+.cache
